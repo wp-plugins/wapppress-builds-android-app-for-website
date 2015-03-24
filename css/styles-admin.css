@@ -1,0 +1,136 @@
+.loader {
+position:absolute;
+top:40%;
+left:63.5%;
+}
+.submit .magi-tabs {
+	margin: 0 10px;
+	display: none;
+}
+.wrap-left{
+width:50%;
+float:left;
+
+}
+
+.wrap-right{
+background-image: url("../images/phone_img.png");
+margin:0;
+padding:0;
+float:left;
+margin-left: 20px;
+}
+
+.wrap-right iframe {
+	/*overflow-y:scroll;*/
+	height: 450px;
+    padding: 77px 14px 83px;
+    width: 320px;
+	
+}
+ .mobileFrame {
+        position: relative;
+		background-image: url("../images/phone_img.png");
+    }
+
+#toggle-view li a{
+color:#02BFEF;
+font-weight:bold;
+}
+.app_input option{
+color:#000;
+}
+.wp-admin select{
+
+}
+
+.wappPressSelect{}
+.wappPressSelect a{height:35px; width:35px; margin:2px; display:block; float:left; border:1px #ccc solid;}
+.wappPressSelect a img{width:100%; height:100%;}
+.wappPressSelect a:hover, .wappPressSelect a.selected
+{border:1px #CC3300 solid; outline:none;
+-moz-box-shadow:0 0 3px 3px rgba(255,112,18,0.5); -webkit-box-shadow:0 0 3px 3px rgba(255,112,18,0.5);box-shadow:0 0 3px 3px rgba(255,112,18,0.5);
+}
+.wpClsass{width:80% !important;float:left !important;}
+.wpbody{
+	background: none repeat scroll 0 0 #fff;
+    border: 1px solid #000;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease 0s;
+    margin:16px 0 37px 19px !important;
+	width:90%;
+}
+.supportForms{
+	background: none repeat scroll 0 0 #fff;
+    border: medium none;
+    border-radius: 10px;
+    padding: 10px;
+    width: 95%;
+}
+.supportForms_input p{
+	color: #585858;
+    font-family: "open_sansregular";
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0 0 3px 5px;
+    padding: 0;
+}	
+
+
+label.error{
+float:left;
+margin-left: 0.5%;
+color:#E01E00;
+font-size: 13px !important;
+font-weight: bold;
+}
+
+
+
+.ajax_load{
+	position: fixed;
+	display:none;
+	height:13px;
+	width:208px;
+	z-index:103;
+	top: 50%;
+	left: 40%;
+	margin: -6px 0 0 -104px; /* -height/2 0 0 -width/2 */
+}
+* html .ajax_load { /* ie6 hack */
+	position: absolute;
+	margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (TBWindowMargin = document.documentElement && document.documentElement.scrollTop || document.body.scrollTop) + 'px');
+}
+
+
+.ajax_overlay {
+  position: fixed;
+  z-index:102;
+  top: 0px;
+  left: 0px;
+  height:100%;
+  width:100%;
+  background-color:#FFF;
+  filter:alpha(opacity=75);
+  -moz-opacity: 0.60;
+  opacity: 0.75;
+}
+
+* html .ajax_overlay { /* ie6 hack */
+     position: absolute;
+     height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
+}
+.supportForms_div{
+	border:1px dashed gray;
+	padding-bottom: 15px; 
+	padding-top: 15px;
+}
+.supportForms_span{
+font-weight:bold;
+font-size:20px;
+text-align:center;
+color:red;
+}
+
