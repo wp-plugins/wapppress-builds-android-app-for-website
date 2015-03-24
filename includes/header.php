@@ -53,6 +53,7 @@ jQuery(document).ready(function () {
 					<ul>
 						<li><a <?php if(isset($_GET['page']) && $_GET['page']=='wapppressplugin'){ echo 'class="active"'; } ?> href="<?php echo admin_url('admin.php?page=wapppressplugin'); ?>"  >WappPress </a></li>
 						<li><a <?php if(isset($_GET['page']) && $_GET['page']=='wapppresssettings'){ echo 'class="active"'; } ?> href="<?php echo admin_url('admin.php?page=wapppresssettings'); ?>" >Settings & Build App </a></li>
+						<li><a <?php if(isset($_GET['page']) && $_GET['page']=='wapppresssettings#bulid'){ echo 'class="active"'; } ?> href="<?php echo admin_url('admin.php?page=wapppresssettings#bulid'); ?>" >Build Android App </a></li>
 						<li><a <?php if(isset($_GET['page']) && $_GET['page']=='wapppresstheme'){ echo 'class="active"'; } ?> href="<?php echo admin_url('admin.php?page=wapppresstheme'); ?>">Themes </a></li>
 					</ul>
 				</div>

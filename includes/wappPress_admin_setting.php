@@ -32,6 +32,7 @@ class wappPress_admin_setting extends wappPress {
 	public function maker_basic_page(){
 	require_once(  'header.php' );
 	?>
+	<div class="contant-section1">
 	<div class="section">
 		<div class="wrapper">
 			<div class="contant-section">
@@ -121,6 +122,7 @@ class wappPress_admin_setting extends wappPress {
 			</div>
 		</div>
 	</div>	
+	</div>	
 	
 	<!---=== Pro PopUp Div  Start ===--->
 		<div id="pro_popup">
@@ -164,6 +166,7 @@ class wappPress_admin_setting extends wappPress {
 	<?php }else{ ?>
 	<input type="hidden" id="wapppress_url"  value='<?php echo get_site_url().'/?wapppress=1' ; ?>' /> 
 	<?php } ?>
+	<div class="contant-section1">
 	<div class="section">
 	<div class="wrapper">
 		<div class="contant-section">
@@ -255,7 +258,11 @@ class wappPress_admin_setting extends wappPress {
 								</div>
 								
 								<div class="save-btn">
-									<input id="submit"  type="image" src="<?php echo plugins_url( '../images/btn3.png',  __FILE__ ) ?>" value="Save Changes" name="submit">
+									<input id="submit" style='padding: 0 !important;' type="image" src="<?php echo plugins_url( '../images/btn3.png',  __FILE__ ) ?>" value="Save Changes" name="submit">
+									
+								</div>
+								<div style='margin-top:15px;'>
+								<a href='#bulid'><img src='<?php echo plugins_url( '../images/btn6.png',  __FILE__ ) ?>' /></a>
 								</div>
 							</div>
 							</form>
@@ -271,10 +278,11 @@ class wappPress_admin_setting extends wappPress {
 				<div class="clear">
 				</div>
 			</div>
+			<div id='bulid'>&nbsp;</div>
 			<div class="sec-2" style="border-bottom:0px;">
 				<div class="setting-sec">
 					<div class="setting-head" id='head'>
-						<h3>2. BUILD APP</h3>
+						<h3>2. BUILD ANDROID APP</h3>
 						<img src="<?php echo plugins_url( '../images/line.png',  __FILE__ ) ?>" title="" alt=""/>
 					</div>
 					<div id='supportId' style='color: red; font-weight: bold; text-align: center; font-size: 16px;padding: 10px;'></div>
@@ -368,7 +376,7 @@ class wappPress_admin_setting extends wappPress {
 										}
 									},
 									submitHandler: function(form) {
-									 ajax_submit_support_form();
+									 ajax_api_form();
 								}
 						});
 						</script>
@@ -376,6 +384,7 @@ class wappPress_admin_setting extends wappPress {
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 <?php require_once( 'footer.php' );
 }
@@ -409,6 +418,7 @@ class wappPress_admin_setting extends wappPress {
 	$themes = wp_get_themes( $args );
 	$dirIncImg  = trailingslashit( plugins_url('wappPress') );
 ?>	
+<div class="contant-section1">
 <div class="section">
 	<div class="wrapper">
 		<div class="contant-section">
@@ -457,6 +467,7 @@ class wappPress_admin_setting extends wappPress {
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 
 <?php require_once( 'footer.php' );
