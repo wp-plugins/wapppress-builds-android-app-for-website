@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: WappPress
+Plugin Name: WappPress - Builds Android App for Wordpress
 Plugin URI: http://wapppress.com
-Description: Builds Android App for Wordpress site in real time using various options.
-Version: 1.0.1
+Description: WappPress Build Android App for any wordpress website in real time. You can customize your App using easy to use options 
+Version: 1.0.2
 Author: WappPress Team
 Author URI: http://wapppress.com
 */
@@ -138,7 +138,6 @@ Author URI: http://wapppress.com
 		wp_enqueue_script( 'jquery.validate', plugins_url( 'js/jquery.validate.js',  __FILE__ ), array('jquery'));
 		wp_enqueue_script( 'additional-methods.min', plugins_url( 'js/additional-methods.min.js',  __FILE__ ), array('jquery'));
 		wp_enqueue_script( 'admin-script.min', plugins_url( 'js/admin-script.min.js',  __FILE__ ), array('jquery'));
-		wp_enqueue_script( 'script', plugins_url( 'js/script.js',  __FILE__ ), array('jquery'));
 	}
 }
 new wappPress();
