@@ -7,7 +7,7 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-WappPress – Builds Android App for Wordpress site in real time uaing various options.
+WappPress – Builds Android App for Wordpress site in real time using various easy to use customization options.
 
 == Description ==
 
