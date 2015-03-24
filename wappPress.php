@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: WappPress - Builds Android App for Wordpress
+Plugin Name: WappPress - Builds Android Mobile App for Wordpress Site
 Plugin URI: http://wapppress.com
-Description: WappPress Build Android App for any wordpress website in real time. You can customize your App using easy to use options 
+Description: WappPress Build Android App for any wordpress website in real time. You can customize your App using easy to use options. Try it Now ! 
 Version: 1.0.2
 Author: WappPress Team
 Author URI: http://wapppress.com
