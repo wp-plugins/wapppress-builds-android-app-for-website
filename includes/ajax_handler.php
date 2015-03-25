@@ -13,7 +13,7 @@ function cur_site_url() {
 	 }
 	 $subDirURL='';
 	 if(!empty($_SERVER['SCRIPT_NAME'])){
-		 $subDirURL .=str_replace("wp-content/plugins/wappPress/includes/support_email.php","",$_SERVER['SCRIPT_NAME']);
+		 $subDirURL .=str_replace("wp-content/plugins/wapppress-builds-android-app-for-website/includes/ajax_handler.php","",$_SERVER['SCRIPT_NAME']);
 	 }
 	 return $pageURL.$subDirURL;
 }
@@ -45,6 +45,7 @@ if( isset($_POST['type']) && $_POST['type'] =='api_create_form') {
 		curl_setopt($post, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($post, CURLOPT_SSL_VERIFYHOST, 2);
 		$result = curl_exec($post);
+
 		if($result==1){
 			echo '1'.'~'.$d_name;
 			curl_close($post);

@@ -1,15 +1,15 @@
 <?php
 class wappPress_admin_setting extends wappPress {
 	function __construct() {
-			add_action( 'admin_menu', array( $this, 'maker_menu' ), 7);
-			add_action( 'admin_init', array( $this, 'register_settings' ) );
-			add_action( 'wp_ajax_search_post_handler', array( $this, 'search_post_results' ) );
+		add_action( 'admin_menu', array( $this, 'maker_menu' ), 7);
+		add_action( 'admin_init', array( $this, 'register_settings' ) );
+		add_action( 'wp_ajax_search_post_handler', array( $this, 'search_post_results' ) );
 		if ( isset( $_GET['clear_app_cookie'] ) && 'true' === $_GET['clear_app_cookie'] ) {
 			  self::reset_cookie();
 		}
 	}
 	public function maker_menu() {
-		$dirPlgUrl  = trailingslashit( plugins_url('wappPress') );
+		$dirPlgUrl  = trailingslashit( plugins_url('wapppress-builds-android-app-for-website') );
 		$pageTitle = __( 'WappPress', 'WappPress' );
 		$maPlgin = 'wapppressplugin';
 		$maSett = 'wapppresssettings';
@@ -151,7 +151,7 @@ class wappPress_admin_setting extends wappPress {
 	// Setting Page 
 	public function maker_settings_page(){
 	require_once(  'header.php' );
-	$dirIncImg  = trailingslashit( plugins_url('wappPress') );
+	$dirIncImg  = trailingslashit( plugins_url('wapppress-builds-android-app-for-website') );
 	$options = get_option('wapppress_settings');
 	$args= array();	
 	$all_themes = wp_get_themes( $args );
@@ -312,7 +312,7 @@ class wappPress_admin_setting extends wappPress {
 						</div>
 						
 						<div class="sve_change_btn sve_change_btn2">
-							<input id="submit"  type="image" src="<?php echo $dirIncImg; ?>images/btn4.png" value="Save Changes" name="submit">
+							<input id="submit"  type="image" src="<?php echo plugins_url( '../images/btn4.png',  __FILE__ ) ?>" value="Save Changes" name="submit">
 							<span id='dwnloakId' style="display: block; margin-right: 160px;float:right;" ></span>
 						</div>
 					</div>
@@ -416,7 +416,7 @@ class wappPress_admin_setting extends wappPress {
 	require_once( 'header.php' );
 	$args =array();
 	$themes = wp_get_themes( $args );
-	$dirIncImg  = trailingslashit( plugins_url('wappPress') );
+	$dirIncImg  = trailingslashit( plugins_url('wapppress-builds-android-app-for-website') );
 ?>	
 <div class="contant-section1">
 <div class="section">
