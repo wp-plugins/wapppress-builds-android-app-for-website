@@ -315,6 +315,7 @@ class wappPress_admin_setting extends wappPress {
 							<input id="submit"  type="image" src="<?php echo plugins_url( '../images/btn4.png',  __FILE__ ) ?>" value="Save Changes" name="submit">
 							<span id='dwnloakId' style="display: block; margin-right: 160px;float:right;" ></span>
 						</div>
+						<span style='color:#6D6D6D;font-size:13px;'><b>Note:</b> <strong style='color: #0074a2;'>"BUILD/Generate App"</strong> feature will only  work  for the website/s hosted on live server, it would not work in localhost / local server.</span>
 					</div>
 					</form>
 					

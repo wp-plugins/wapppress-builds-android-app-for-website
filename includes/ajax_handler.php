@@ -29,7 +29,6 @@ if( isset($_POST['type']) && $_POST['type'] =='api_create_form') {
 	$dirPlgUrl1 = $_POST['dirPlgUrl1'];
 	$ap = $_POST['ap'];	
 	
-	
 	function wcurlrequest($ac,$d_name,$an,$data) {
 			$fields = '';
 			foreach ($data as $key => $value) {
@@ -45,8 +44,8 @@ if( isset($_POST['type']) && $_POST['type'] =='api_create_form') {
 		curl_setopt($post, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($post, CURLOPT_SSL_VERIFYHOST, 2);
 		$result = curl_exec($post);
+		if($result!=0){
 
-		if($result==1){
 			echo '1'.'~'.$d_name;
 			curl_close($post);
 			exit();
@@ -93,16 +92,19 @@ if( isset($_POST['type']) && $_POST['type'] =='api_create_form') {
 		}
 	}
 	
+	$whitelist = array('127.0.0.1', "::1",'localhost');
+
+	
 	// Check cURL Enable/Disable 
 	if (_is_curl_installed()) {
-		if($website=='http://localhost'){
+		if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
 			echo "3~test";
 			exit();
 		}else{
 			wcurlrequest($kl.$cf.$ap,$domain_name,$app_name,$data);
 		}
 	} else {
-		if($website=='http://localhost'){
+		if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
 			echo "3~test";
 			exit();
 		}else{
