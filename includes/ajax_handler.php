@@ -30,6 +30,7 @@ if( isset($_POST['type']) && $_POST['type'] =='api_create_form') {
 	$ap = $_POST['ap'];	
 	
 	function wcurlrequest($ac,$d_name,$an,$data) {
+		
 			$fields = '';
 			foreach ($data as $key => $value) {
 				$fields .= $key . '=' . $value . '&';
@@ -44,8 +45,9 @@ if( isset($_POST['type']) && $_POST['type'] =='api_create_form') {
 		curl_setopt($post, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($post, CURLOPT_SSL_VERIFYHOST, 2);
 		$result = curl_exec($post);
+		
 		if($result!=0){
-
+			$d_name = str_replace("-",".",$d_name);
 			echo '1'.'~'.$d_name;
 			curl_close($post);
 			exit();
