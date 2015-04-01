@@ -55,11 +55,10 @@ class wappPress_admin_setting extends wappPress {
 							<li>Select and customize splash screen</li>
 							<li>Upload your own splash screen </li>
 							<span style='font-size:10px;margin-left:20px;'>( You can upload your own splash screen image, this will be used to capture the user's attention for a short time as a promotion or lead-in)</span><br /><br />
-							<li>Push Notification Coming Soon</li>
+							<li>Push Notification <span style='color: red;display: inline;float: none;'>(New)</span></li>
 							<li>Ads Free - i.e. no ads/brand name include inside</li>
 							<li>Allow to Build Android App in Real Time</li>
 							<li>Android App Validity – 1 Month</li>
-							
 						</ul>
 						<span><a href="<?php echo admin_url('admin.php?page=wapppresssettings'); ?>"><img src="<?php echo plugins_url( '../images/btn.png',  __FILE__ ) ?>" title="" alt=""/></a></span>
 					</div>
@@ -86,18 +85,17 @@ class wappPress_admin_setting extends wappPress {
 					<div class="inner-contant">
 						<div class="list-sec1">
 							<ul>
-							<li>Select different home page for Mobile app</li>
-							<li>Select Different theme for website & mobile app   </li>
-							<li>Select and customize launcher icon</li>
-							<li>Upload your own custom icon</li>
-							<li>Select and customize splash screen</li>
-							<li>Upload your own splash screen </li>
-							<span style='font-size:10px;float:left;margin-left:24px;'>( You can upload your own splash screen image, this will be used to capture the user's attention for a short time as a promotion or lead-in)</span><br /><br />
-							<li>Push Notification Coming Soon</li>
-							<li>Ads Free - i.e. no ads/brand name include inside</li>
-							<li>Allow to Build Android App in Real Time</li>
-							<li>Android App Validity – Unlimited Time</li>
-							
+								<li>Select different home page for Mobile app</li>
+								<li>Select Different theme for website & mobile app</li>
+								<li>Select and customize launcher icon</li>
+								<li>Upload your own custom icon</li>
+								<li>Select and customize splash screen</li>
+								<li>Upload your own splash screen </li>
+								<span style='font-size:10px;float:left;margin-left:24px;'>( You can upload your own splash screen image, this will be used to capture the user's attention for a short time as a promotion or lead-in)</span><br /><br />
+								<li>Push Notification <span style='color: red;display: inline;float: none;'>(New)</span></li>
+								<li>Ads Free - i.e. no ads/brand name include inside</li>
+								<li>Allow to Build Android App in Real Time</li>
+								<li>Android App Validity – Unlimited Time</li>
 							</ul>
 							
 							<span><a href="http://goo.gl/bcEb25" target='_blank'  ><img src="<?php echo plugins_url( '../images/btn2.png',  __FILE__ ) ?>" title="" alt=""/></a></span>
@@ -113,8 +111,7 @@ class wappPress_admin_setting extends wappPress {
 					</div>
 				</div>
 				<div class="sec-3">
-					<h3>
-					Publish App </h3>
+					<h3> Publish App </h3>
 					<p>
 						If you need any help regarding publishing your app on Google Play <span><a href="mailto:info@wapppress.com">contact US</a></span>
 					</p>
@@ -137,11 +134,6 @@ class wappPress_admin_setting extends wappPress {
 					</div>
 			</div>
 		</div>	
-		
-		
-		<script type="text/javascript">
-					
-		</script>
 	<!---=== Pro PopUp Div  End ===--->
 	
 	<?php	
