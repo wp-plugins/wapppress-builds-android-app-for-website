@@ -58,7 +58,7 @@ class wappPress_admin_setting extends wappPress {
 							<li>Push Notification <span style='color: red;display: inline;float: none;'>(New)</span></li>
 							<li>Ads Free - i.e. no ads/brand name include inside</li>
 							<li>Allow to Build Android App in Real Time</li>
-							<li>Android App Validity – 1 Month</li>
+							<li>Android App Validity – 15 Days</li>
 						</ul>
 						<span><a href="<?php echo admin_url('admin.php?page=wapppresssettings'); ?>"><img src="<?php echo plugins_url( '../images/btn.png',  __FILE__ ) ?>" title="" alt=""/></a></span>
 					</div>
