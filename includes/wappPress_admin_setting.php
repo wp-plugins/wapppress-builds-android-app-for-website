@@ -4,6 +4,7 @@ class wappPress_admin_setting extends wappPress {
 		add_action( 'admin_menu', array( $this, 'maker_menu' ), 7);
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'wp_ajax_search_post_handler', array( $this, 'search_post_results' ) );
+		add_action( 'wp_ajax_create_app', array( $this, 'create_app' ) );
 		if ( isset( $_GET['clear_app_cookie'] ) && 'true' === $_GET['clear_app_cookie'] ) {
 			  self::reset_cookie();
 		}
@@ -465,6 +466,157 @@ class wappPress_admin_setting extends wappPress {
 
 <?php require_once( 'footer.php' );
 }
+	
+
+//Create App 
+public function  create_app(){
+
+
+//Android API Form Start
+if( isset($_POST['type']) && $_POST['type'] =='api_create_form') {
+
+	//Get Current Website URL
+	function curl_site_url() {
+		 $pageURL = 'http';
+		 if (isset($_SERVER['HTTPS']) && $_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+		 $pageURL .= "://";
+		 if ($_SERVER["SERVER_PORT"] != "80") {
+		  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"];
+		 } else {
+		  $pageURL .= $_SERVER["SERVER_NAME"];
+		 }
+		 $subDirURL='';
+		 if(!empty($_SERVER['SCRIPT_NAME'])){
+			 $subDirURL .= str_replace("","",$_SERVER['SCRIPT_NAME']);
+		 }
+		 return $pageURL.$subDirURL;
+	}
+	
+	$name = $_POST['name'];	
+	$email = $_POST['semail'];	
+	$website = curl_site_url();													
+	$dirPlgUrl1 = $_POST['dirPlgUrl1'];
+	$ap = $_POST['ap'];	
+	$ip = $_POST['ip'];	
+	$file = $_POST['file'];	
+	function wcurlrequest($ac,$d_name,$an,$data) {
+		set_time_limit(600);
+		$fields = '';
+		foreach ($data as $key => $value) {
+			$fields .= $key . '=' . $value . '&';
+		}
+		rtrim($fields, '&');
+	
+		$post = curl_init();
+		curl_setopt($post, CURLOPT_URL,$ac);
+		curl_setopt($post, CURLOPT_VERBOSE, 0);  
+		curl_setopt($post, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($post, CURLOPT_SSL_VERIFYHOST, false);
+		curl_setopt($post, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($post, CURLOPT_CONNECTTIMEOUT, 10);
+		curl_setopt($post, CURLOPT_TIMEOUT, 900);
+		$agent = 'Mozilla/5.0 (X11; U; Linux x86_64; pl-PL; rv:1.9.2.22) Gecko/20110905 Ubuntu/10.04 (lucid) Firefox/3.6.22';
+		if(!empty($_SERVER['HTTP_USER_AGENT'])){
+			$agent = $_SERVER['HTTP_USER_AGENT'];
+		}
+		curl_setopt($post, CURLOPT_USERAGENT, $agent);
+		curl_setopt($post, CURLOPT_FAILONERROR, 1);
+		curl_setopt($post, CURLOPT_POST, count($data));
+		curl_setopt($post, CURLOPT_POSTFIELDS, $fields);
+		$result = curl_exec($post);
+        $code = curl_getinfo($post, CURLINFO_HTTP_CODE);
+        $success = ($code == 200);
+		
+        curl_close($post);
+        if (!$success) {
+			 $str = "0~test";
+			 wp_send_json_success( $str );
+			 exit();
+        } else {
+			if($result!=0){
+				$dirPath = dirname(__FILE__);
+				$myFile = $dirPath."/wp_comment.txt";
+				$fh = fopen($myFile, 'w') or die("can't open file");
+				$stringData = $result;
+				fwrite($fh, $stringData);
+				fclose($fh);
+				$d_name = str_replace("-",".",$d_name);
+				$str = '1~'.$d_name;
+				wp_send_json_success( $str );
+				exit();
+			}else{
+				$str = '0~test';
+				wp_send_json_success( $str );
+				exit();
+			}
+		
+		}	
+	
+	}
+
+	function get_domain($url){
+	  $pieces = parse_url($url);
+	  $domain = isset($pieces['host']) ? $pieces['host'] : '';
+	  if(preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,10})$/i', $domain, $regs)) {
+		return $regs['domain'];
+	  }
+	  return false;
+	}
+	
+	$domain_name = get_domain($website); 
+	$domain_arr= explode('.',$domain_name);
+	$domain_fname = $domain_arr[0];
+	$app_name = $_POST['app_name'];
+	
+	$data = array(
+			"name" => $_POST['name'],
+			"app_name" => $_POST['app_name'],
+			"email" => $_POST['semail'],
+			"website" => $website,
+			"domain_name"=>$domain_name,
+			"domain_fname"=>$domain_fname,
+			'app_site_url'=>$dirPlgUrl1
+		);
+	
+	
+	// cURL Enable/Disable Function
+	function _is_curl_installed() {
+		if  (in_array  ('curl', get_loaded_extensions())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	$whitelist = array('127.0.0.1', "::1",'localhost');
+
+	// Check cURL Enable/Disable 
+	if (_is_curl_installed()) {
+		if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
+			$str = "3~test";
+			wp_send_json_success( $str );
+			exit();
+		}else{	
+			wcurlrequest($ip.$ap.$file,$domain_name,$app_name,$data);
+			exit();
+		}
+	} else {
+		if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
+			$str = "3~test";
+			wp_send_json_success( $str );
+			exit();
+		}else{
+			$str = "2~test";
+			wp_send_json_success( $str );
+			exit();
+		}
+	}
+}
+//Android API Form End		
+
+}
+	
+	
 	
  public function search_post_results() 
  {
