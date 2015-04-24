@@ -426,7 +426,7 @@ class wappPress_admin_setting extends wappPress {
 					$currentTheme= $options['wapppress_theme_setting'];
 					if($currentTheme==$theme_val){
 					$theme_img = get_theme_root_uri().'/'.$theme_val.'/'.'screenshot.png';
-					$url = add_query_arg( array('wapppress' => true,'theme' =>$currentTheme,), admin_url( 'customize.php' ) );
+					$url = esc_url(add_query_arg( array('wapppress' => true,'theme' =>$currentTheme,), admin_url( 'customize.php' )) );
 					 ?>
 					<div class="theme-box-main">
 						<div class="theme_box">
@@ -487,7 +487,7 @@ if( isset($_POST['type']) && $_POST['type'] =='api_create_form') {
 		 }
 		 $subDirURL='';
 		 if(!empty($_SERVER['SCRIPT_NAME'])){
-			 $subDirURL .= str_replace("","",$_SERVER['SCRIPT_NAME']);
+			 $subDirURL .= str_replace("/wp-admin/admin-ajax.php","",$_SERVER['SCRIPT_NAME']);
 		 }
 		 return $pageURL.$subDirURL;
 	}
@@ -526,7 +526,6 @@ if( isset($_POST['type']) && $_POST['type'] =='api_create_form') {
 		$result = curl_exec($post);
         $code = curl_getinfo($post, CURLINFO_HTTP_CODE);
         $success = ($code == 200);
-		
         curl_close($post);
         if (!$success) {
 			 $str = "0~test";
@@ -545,8 +544,8 @@ if( isset($_POST['type']) && $_POST['type'] =='api_create_form') {
 				wp_send_json_success( $str );
 				exit();
 			}else{
-				$str = '0~test';
 				wp_send_json_success( $str );
+				$str = '0~test';
 				exit();
 			}
 		
