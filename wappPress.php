@@ -3,7 +3,7 @@
 Plugin Name: WappPress - Builds Android Mobile App for Wordpress Site
 Plugin URI: http://wapppress.com
 Description: WappPress Builds Android Mobile App for any wordpress website in real time. You can send push notifications, customize your App easily. Try it Now ! 
-Version: 1.0.3
+Version: 2.0.0
 Author: WappPress Team
 Author URI: http://wapppress.com
 */
@@ -35,7 +35,7 @@ Author URI: http://wapppress.com
 		require_once( $dirInc . 'wappPress_customize.php' );
 		new wappPress_customize();
 		$options = get_option('wapppress_settings');
-		
+		define('COMPILE_ID','http://wapppress.com');
 		//Hide/Show App Name
 		if(!empty($options['wapppress_name'])){	
 			add_filter( 'bloginfo', 'wpse_alter_blog_name', 10, 2 );

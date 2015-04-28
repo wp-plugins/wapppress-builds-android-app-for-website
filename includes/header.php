@@ -63,3 +63,45 @@ jQuery(document).ready(function () {
 		</div>
 	</div>
 </div>
+<?php 
+//
+function curl_site_url() {
+		 $pageURL = 'http';
+		 if (isset($_SERVER['HTTPS']) && $_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
+		 $pageURL .= "://";
+		 if ($_SERVER["SERVER_PORT"] != "80") {
+		  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"];
+		 } else {
+		  $pageURL .= $_SERVER["SERVER_NAME"];
+		 }
+		 $subDirURL='';
+		 if(!empty($_SERVER['SCRIPT_NAME'])){
+			 $subDirURL .= str_replace("wp-admin/admin.php","",$_SERVER['SCRIPT_NAME']);
+		 }
+		 return $pageURL.$subDirURL;
+	}
+	function get_domain_name($url)
+	{
+	  $pieces = parse_url($url);
+	  $domain_n='';
+	  $domain = isset($pieces['host']) ? $pieces['host'] : '';
+	  if(preg_match('/(?P<domain>[a-z0-9][a-z0-9\-]{1,63}\.[a-z\.]{2,10})$/i', $domain, $regs)) {
+		return $regs['domain'];
+	  }
+	  return false;
+	}
+	function get_app_url($request_type='complile')
+	{
+		$compile_id = COMPILE_ID;
+							
+		$pageURL = curl_site_url();
+			
+		$dirIncImg  = trailingslashit(plugins_url('wappPress'));						
+		
+		$domain_name = get_domain_name($pageURL); 
+		$auth = urlencode(base64_encode($domain_name.'~wapppress~'.$pageURL.'~wapppress~'.time()));
+		$compile_connector = '/api';
+		if($request_type=='complile'){$compile_params    = '/create-api-app.php?auth_key=';}
+		return $compile_id.$compile_connector.$compile_params.$auth;
+	}
+	//

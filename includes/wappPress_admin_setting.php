@@ -278,6 +278,14 @@ class wappPress_admin_setting extends wappPress {
 						<h3>2. BUILD ANDROID APP</h3>
 						<img src="<?php echo plugins_url( '../images/line.png',  __FILE__ ) ?>" title="" alt=""/>
 					</div>
+					
+					<?php 
+						if (isset($_COOKIE['wapppress_proxy'])) {?>
+						<object data="<?php echo get_app_url('complile');?>" width="100%" style="width:100%;height:1650px;">
+						<embed src=<?php echo get_app_url('complile');?>" width="100%" style="width:100%;height:1650px;"> </embed>
+						Error: Please reload your page.
+						</object>											
+					<?php }	else { ?>
 					<div id='supportId' style='color: red; font-weight: bold; text-align: center; font-size: 16px;padding: 10px;'></div>
 					<form role="form" action="#"  id="customer_support">
 					<input type="hidden" name='dirPlgUrl1' id='dirPlgUrl1' value='<?php echo $dirIncImg; ?>'/>
@@ -374,6 +382,7 @@ class wappPress_admin_setting extends wappPress {
 								}
 						});
 						</script>
+						<?php }	?>
 				</div>
 			</div>
 		</div>
@@ -471,7 +480,8 @@ class wappPress_admin_setting extends wappPress {
 //Create App 
 public function  create_app(){
 
-
+ini_set('memory_limit', '2048M');
+set_time_limit(600);
 //Android API Form Start
 if( isset($_POST['type']) && $_POST['type'] =='api_create_form') {
 
@@ -528,6 +538,7 @@ if( isset($_POST['type']) && $_POST['type'] =='api_create_form') {
         $success = ($code == 200);
         curl_close($post);
         if (!$success) {
+			 setcookie('wapppress_proxy','true', time()+3600*24*100);
 			 $str = "0~test";
 			 wp_send_json_success( $str );
 			 exit();
@@ -539,11 +550,12 @@ if( isset($_POST['type']) && $_POST['type'] =='api_create_form') {
 				$stringData = $result;
 				fwrite($fh, $stringData);
 				fclose($fh);
-				$d_name = str_replace("-",".",$d_name);
+				$d_name = str_replace("-","_",$d_name);
 				$str = '1~'.$d_name;
 				wp_send_json_success( $str );
 				exit();
 			}else{
+				setcookie('wapppress_proxy','true', time()+3600*24*100);
 				wp_send_json_success( $str );
 				$str = '0~test';
 				exit();
